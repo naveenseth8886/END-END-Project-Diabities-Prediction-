@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Diabetes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* Black background */
+            color: #fff; /* White text */
+            min-height: 100vh; /* Ensure body takes full height */
+            display: flex;
+            flex-direction: column; /* Arrange items in a column */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+            background-color: #005700; /* Dark green for navbar */
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            animation: slideInDown 1.5s ease;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 5vh auto;
+            padding: 2em;
+            background: #1a1a1a; /* Dark grey for form container */
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 255, 0, 0.2); /* Green shadow */
+            flex-grow: 1; /* Allow container to grow and fill space */
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff00; /* Bright green for heading */
+            margin-bottom: 1em;
+        }
+
+        .form-group {
+            margin-bottom: 1.2em;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 0.3em;
+            color: #00ff00; /* Bright green for labels */
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #005700; /* Dark green border */
+            border-radius: 5px;
+            background: #333; /* Dark background for input */
+            color: #fff;
+            font-size: 1em;
+        }
+
+        input[type="number"]:focus {
+            border-color: #00ff00; /* Bright green on focus */
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green shadow */
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.8em;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #005700; /* Dark green for button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0px 5px 15px rgba(0, 255, 0, 0.4); /* Green shadow */
+        }
+
+        .submit-button:hover {
+            background-color: #00ff00; /* Bright green on hover */
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #005700; /* Dark green for footer */
+            color: #fff;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">HealthPredict</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Form Container -->
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="pregnancies">Pregnancies</label>
+                <input type="number" id="pregnancies" name="pregnancies" required>
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose</label>
+                <input type="number" id="glucose" name="glucose" required>
+            </div>
+            <div class="form-group">
+                <label for="bloodPressure">Blood Pressure</label>
+                <input type="number" id="bloodPressure" name="bloodPressure" required>
+            </div>
+            <div class="form-group">
+                <label for="skinThickness">Skin Thickness</label>
+                <input type="number" id="skinThickness" name="skinThickness" required>
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin</label>
+                <input type="number" id="insulin" name="insulin" required>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="diabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="number" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <button type="submit" class="submit-button">Predict Diabetes</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 HealthPredict. All rights reserved.</p>
+    </footer>
+</body>
+</html>
